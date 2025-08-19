@@ -34,7 +34,7 @@ export function Footer() {
                         </div>
                         <div>
                             <h3 className="text-2xl font-extrabold">Luntimeter</h3>
-                            <p className="text-slate-500 mt-1 max-w-[340px]">Turning data into a greener tomorrow. (temporary tagline)</p>
+                            <p className="text-slate-500 mt-1 max-w-[340px]">Where construction meets accountability. (temporary tagline)</p>
                         </div>
                     </div>
                 </div>
@@ -76,7 +76,7 @@ export function Footer() {
 
                 <div className="border-t border-slate-200">
                     <div className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between text-sm text-slate-600">
-                        <div className="text-xs">© {new Date().getFullYear()} Luntimeter Inc.</div>
+                        <div className="text-xs">© 2025 Luntimeter Inc.</div>
                         <div className="flex items-center gap-8">
                             <a href="#" className="hover:underline">Terms of Service</a>
                             <a href="#" className="hover:underline">Privacy Policy</a>

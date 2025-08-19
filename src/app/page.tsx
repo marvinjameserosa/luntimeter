@@ -12,7 +12,7 @@ import { Footer } from "@/components/sections/Footer";
 const headerData = {
   logo: {
     alt: "LuntiMeter",
-    src: "/logo.svg",
+    src: "/Luntimeter.svg",
     width: 150,
     height: 40,
   },

@@ -103,9 +103,12 @@ export const Header = ({
         <div className="container mx-auto flex w-full items-center justify-between px-6">
           <Link
             href="/"
-            className="flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="flex items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
             <LogoImage {...logo} />
+            <span className="text-lg font-bold text-slate-800 leading-tight hidden sm:inline">
+              Luntimeter
+            </span>
           </Link>
 
           {/* Desktop Navigation */}

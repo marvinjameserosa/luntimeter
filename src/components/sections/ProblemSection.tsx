@@ -3,8 +3,11 @@ import { DollarSign, Shield, Building } from "lucide-react";
 
 export function ProblemSection() {
   return (
-    <section className="py-20 px-4 bg-gray-50">
-      <div className="max-w-6xl mx-auto">
+    <section className="py-20 px-4 bg-gray-50 relative overflow-hidden">
+      <div className="absolute inset-x-0 top-0 h-12 md:h-20 pointer-events-none z-0">
+        <div className="w-full h-full bg-gradient-to-b from-white to-transparent" />
+      </div>
+      <div className="relative z-10 max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-[#333333] mb-6">
             Good Practices Go Unrewarded. Until Now.

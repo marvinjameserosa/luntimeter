@@ -4,9 +4,9 @@ export function HeroSection() {
   return (
     <section className="h-screen relative overflow-hidden text-white py-40 px-5">
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -top-32 -left-24 h-[28rem] w-[40rem] rounded-full bg-gradient-to-tr from-[#d0f3da] via-[#74efa3] to-[#78e738] opacity-40 blur-3xl mix-blend-multiply animate-blob" />
-        <div className="absolute top-16 right-[-9rem] h-[30rem] w-[40rem] rounded-full bg-gradient-to-br from-[#84dd51] via-[#8dff8d] to-[#86efac] opacity-40 blur-3xl mix-blend-multiply animate-blob animation-delay-2000" />
-        <div className="absolute -bottom-24 left-20 h-[28rem] w-[50rem] rounded-full bg-gradient-to-tr from-[#b0dfb3] via-[#6fffb2] to-[#70e32e] opacity-35 blur-3xl mix-blend-multiply animate-blob animation-delay-4000" />
+        <div className="absolute -top-32 -left-24 h-[28rem] w-[40rem] rounded-full bg-gradient-to-tr from-[#6ACF30] via-[#79EF35] to-[#B7FF8E] opacity-40 blur-3xl mix-blend-multiply animate-blob" />
+        <div className="absolute top-16 right-[-9rem] h-[30rem] w-[40rem] rounded-full bg-gradient-to-br from-[#6ACF30] via-[#79EF35] to-[#B7FF8E] opacity-40 blur-3xl mix-blend-multiply animate-blob animation-delay-2000" />
+        <div className="absolute -bottom-24 left-20 h-[28rem] w-[50rem] rounded-full bg-gradient-to-tr from-[#6ACF30] via-[#79EF35] to-[#B7FF8E] opacity-35 blur-3xl mix-blend-multiply animate-blob animation-delay-4000" />
       </div>
 
       <div className="relative z-10 max-w-5xl mx-auto text-left">

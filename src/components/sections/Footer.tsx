@@ -1,14 +1,12 @@
 export function Footer() {
     return (
             <footer className="bg-gray-50 text-slate-700">
-                {/* Newsletter bar - 3-column grid with empty center */}
                 <div className="max-w-7xl mx-auto px-6 py-14">
                     <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-6">
                         <div>
                             <h2 className="text-3xl lg:text-3xl font-extrabold leading-tight">Join our newsletter to keep up to date with us!</h2>
                         </div>
 
-                        {/* empty middle column to create breathing room */}
                         <div aria-hidden />
 
                         <div className="flex justify-end">
@@ -27,7 +25,6 @@ export function Footer() {
 
                 <div className="border-t border-slate-200" />
 
-                {/* Main footer - larger vertical spacing and column proportions */}
                 <div className="max-w-7xl mx-auto px-6 py-16">
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
                         <div className="md:col-span-4">
@@ -42,10 +39,8 @@ export function Footer() {
                     </div>
                 </div>
 
-                {/* empty middle column to create spacing */}
                 <div className="md:col-span-2" aria-hidden />
 
-                    {/* right column: nested 3-link columns (wider) */}
                     <div className="md:col-span-6">
                         <div className="flex flex-col sm:flex-row sm:justify-end sm:gap-10 gap-6">
                             <div className="max-w-[240px] pl-2">

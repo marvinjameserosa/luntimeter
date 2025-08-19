@@ -51,6 +51,7 @@ import { projects } from "@/dummydata/data";
 import { sensors } from "@/dummydata/data";
 import { recentReports } from "@/dummydata/data";
 import { sidebarItems } from "@/dummydata/data";
+import ChatbotButton from "@/components/sections/ChatbotButton";
 
 export default function LuntiMeterDashboard() {
   const [progress, setProgress] = useState(0);
@@ -852,76 +853,6 @@ export default function LuntiMeterDashboard() {
                       </Card>
                     </div>
                   </section>
-
-                  {/* New AI Assistant Chatbot Section */}
-                  <section className="space-y-4 mt-8">
-                    <div className="flex items-center justify-between">
-                      <h2 className="text-2xl font-semibold">
-                        LuntiMeter AI Assistant
-                      </h2>
-                      <Badge variant="outline" className="rounded-xl">
-                        <Bot className="mr-1 h-3 w-3" /> AI Powered
-                      </Badge>
-                    </div>
-                    <Card className="rounded-3xl overflow-hidden">
-                      <CardContent className="p-0">
-                        <div className="flex flex-col h-[400px]">
-                          <ScrollArea className="flex-1 p-4">
-                            <div className="space-y-4">
-                              {chatMessages.map((msg, index) => (
-                                <div
-                                  key={index}
-                                  className={`flex ${
-                                    msg.role === "user"
-                                      ? "justify-end"
-                                      : "justify-start"
-                                  }`}
-                                >
-                                  <div
-                                    className={`max-w-[80%] rounded-2xl p-3 ${
-                                      msg.role === "user"
-                                        ? "bg-primary text-primary-foreground"
-                                        : "bg-muted"
-                                    }`}
-                                  >
-                                    {msg.role === "assistant" && (
-                                      <div className="flex items-center gap-2 mb-1">
-                                        <Bot className="h-4 w-4" />
-                                        <span className="font-medium">
-                                          LuntiMeter AI
-                                        </span>
-                                      </div>
-                                    )}
-                                    <p>{msg.content}</p>
-                                  </div>
-                                </div>
-                              ))}
-                            </div>
-                          </ScrollArea>
-                          <div className="border-t p-4">
-                            <form
-                              onSubmit={handleChatSubmit}
-                              className="flex gap-2"
-                            >
-                              <Input
-                                placeholder="Ask about ESG improvements..."
-                                value={chatInput}
-                                onChange={(e) => setChatInput(e.target.value)}
-                                className="flex-1 rounded-2xl"
-                              />
-                              <Button
-                                type="submit"
-                                size="icon"
-                                className="rounded-2xl"
-                              >
-                                <Send className="h-4 w-4" />
-                              </Button>
-                            </form>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </section>
                 </TabsContent>
 
                 {/* Other Tabs Content can be filled in similarly */}
@@ -953,6 +884,8 @@ export default function LuntiMeterDashboard() {
           </Tabs>
         </main>
       </div>
+      {/* Floating Chatbot Button */}
+      <ChatbotButton />
     </div>
   );
 }

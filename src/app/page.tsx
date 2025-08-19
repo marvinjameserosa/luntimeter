@@ -7,6 +7,7 @@ import { FeaturesSection } from "@/components/sections/FeaturesSection";
 import { CaseStudySection } from "@/components/sections/CaseStudySection";
 import { TargetAudienceSection } from "@/components/sections/TargetAudienceSection";
 import { FinalCTASection } from "@/components/sections/FinalCTASection";
+import { Footer } from "@/components/sections/Footer";
 
 const headerData = {
   logo: {
@@ -65,6 +66,7 @@ export default function LuntiMeterLanding() {
       <CaseStudySection />
       <TargetAudienceSection />
       <FinalCTASection />
+      <Footer />
     </div>
   );
 }

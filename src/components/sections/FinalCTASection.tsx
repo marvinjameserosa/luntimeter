@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input";
 
 export function FinalCTASection() {
   return (
-    <section className="py-20 px-4 bg-gradient-to-r from-[#6ACF30] to-[#87F646] text-white">
+    <section className="py-20 px-4 bg-gradient-to-r from-[#31A140] to-[#87F646] text-white">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-4xl md:text-5xl font-bold mb-6">
           Ready to Build a Better, More Profitable Future?

@@ -2,30 +2,36 @@ import { Button } from "@/components/ui/button";
 
 export function HeroSection() {
   return (
-    <section className="relative bg-gradient-to-br from-[#6ACF30] to-[#87F646] text-white py-20 px-4">
-      <div className="max-w-6xl mx-auto text-center">
-        <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-          Build a Greener Future.
-          <br />
-          <span className="text-[#B0EB8E]">Unlock Sustainable Financing.</span>
+    <section className="h-screen relative overflow-hidden text-white py-40 px-5">
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute -top-32 -left-24 h-[28rem] w-[40rem] rounded-full bg-gradient-to-tr from-[#d0f3da] via-[#74efa3] to-[#78e738] opacity-40 blur-3xl mix-blend-multiply animate-blob" />
+        <div className="absolute top-16 right-[-9rem] h-[30rem] w-[40rem] rounded-full bg-gradient-to-br from-[#84dd51] via-[#8dff8d] to-[#86efac] opacity-40 blur-3xl mix-blend-multiply animate-blob animation-delay-2000" />
+        <div className="absolute -bottom-24 left-20 h-[28rem] w-[50rem] rounded-full bg-gradient-to-tr from-[#b0dfb3] via-[#6fffb2] to-[#70e32e] opacity-35 blur-3xl mix-blend-multiply animate-blob animation-delay-4000" />
+      </div>
+
+      <div className="relative z-10 max-w-5xl mx-auto text-left">
+        <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-17 text-[#2c4114]">
+          Powering a <span className="text-[#6ACF30]"> Sustainable</span> <br />
+          Future.
         </h1>
-        <p className="text-xl md:text-2xl mb-8 max-w-4xl mx-auto leading-relaxed opacity-95">
+        <p className="text-xl md:text-xl mb-6  mx-auto leading-relaxed opacity-50 text-gray-900">
           LuntiMeter empowers construction businesses with real-time,
-          tamper-proof ESG data. Turn your commitment to sustainability into
-          your greatest asset and gain access to the financing you need to
-          grow.
+          tamper-proof <br />
+          ESG data. Turn your commitment to sustainability into your greatest
+          asset <br />
+          and gain access to the financing you need to grow.
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <div className="flex flex-col sm:flex-row gap-6 justify-start items-center">
           <Button
             size="lg"
-            className="bg-white text-[#6ACF30] hover:bg-gray-100 text-lg px-8 py-4 font-semibold"
+            className="bg-gradient-to-r from-[#6ACF30] to-[#34D399] hover:from-[#5ABF20] hover:to-[#2BC389] text-white text-lg px-10 py-6 font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-0"
           >
             Get Your LuntiScore
           </Button>
           <Button
             size="lg"
             variant="outline"
-            className="border-white text-white hover:bg-white hover:text-[#6ACF30] text-lg px-8 py-4 bg-transparent"
+            className="border-2 border-[#2c4114] text-[#2c4114] hover:bg-[#ffffff] hover:text-[#5ABF20] hover:border-white text-lg px-10 py-6 font-semibold rounded-xl bg-transparent transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
           >
             Schedule a Free Demo
           </Button>

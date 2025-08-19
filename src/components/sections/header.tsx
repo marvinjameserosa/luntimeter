@@ -79,10 +79,17 @@ const LogoImage = ({ src, alt, width = 150, height = 40 }: ImageData) => {
       width={width}
       height={height}
       priority
-      className="max-h-10 w-auto"
+      className="max-h-10 w-auto transition-transform duration-200 hover:scale-105"
     />
   ) : (
-    <span className="text-xl font-bold">Site Logo</span>
+    <Image
+      src="/Luntimeter.svg"
+      alt="Luntimeter"
+      width={width}
+      height={height}
+      priority
+      className="max-h-10 w-auto transition-transform duration-200 hover:scale-105"
+    />
   );
 };
 
@@ -95,23 +102,26 @@ export const Header = ({
 }) => {
   return (
     <header
-      className="sticky left-0 top-0 z-50 flex w-full flex-col border-b bg-background"
+      className="sticky left-0 top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
       role="banner"
       aria-label="Site header"
     >
-      <div className="flex h-16 w-full">
-        <div className="container mx-auto flex w-full items-center justify-between px-6">
+      <div className="flex h-16 w-full items-center">
+        <div className="container mx-auto flex w-full items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link
             href="/"
-            className="flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="flex items-center space-x-2 transition-opacity duration-200 hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
             <LogoImage {...logo} />
+            <span className="text-lg font-bold text-[#2c4114] transition-colors duration-200 hover:text-[#1a2a0d]">
+              Luntimeter
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center justify-between flex-1 ml-10">
+          <div className="hidden lg:flex items-center justify-between flex-1 ml-12">
             <DesktopNavigation links={header.navbar.items} />
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               {header.rightCtas.items.map((cta) => (
                 <Button
                   key={cta._id}
@@ -125,6 +135,7 @@ export const Header = ({
                       ? "outline"
                       : "ghost"
                   }
+                  className="transition-all duration-200 hover:scale-105 active:scale-95"
                 >
                   <Link href={cta.href}>{cta.label}</Link>
                 </Button>
@@ -135,34 +146,47 @@ export const Header = ({
           {/* Mobile Menu */}
           <Sheet>
             <SheetTrigger asChild className="lg:hidden">
-              <Button variant="outline" size="icon" aria-label="Menu">
+              <Button
+                variant="outline"
+                size="icon"
+                aria-label="Menu"
+                className="h-10 w-10 transition-all duration-200 hover:bg-accent hover:scale-105 active:scale-95"
+              >
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
             <SheetContent
               side="right"
-              className="w-[300px] sm:w-[400px] lg:hidden"
+              className="w-[300px] sm:w-[400px] lg:hidden border-l bg-background/95 backdrop-blur"
             >
-              <MobileNavigation links={header.navbar.items} />
-              <div className="flex flex-col mt-8 gap-2">
-                {header.rightCtas.items.map((cta) => (
-                  <Button
-                    key={cta._id}
-                    asChild
-                    variant={
-                      cta.type === "primary"
-                        ? "default"
-                        : cta.type === "secondary"
-                        ? "secondary"
-                        : cta.type === "outline"
-                        ? "outline"
-                        : "ghost"
-                    }
-                    className="w-full"
-                  >
-                    <Link href={cta.href}>{cta.label}</Link>
-                  </Button>
-                ))}
+              <div className="flex flex-col h-full">
+                <div className="flex items-center space-x-2 mb-8 p-2">
+                  <LogoImage {...logo} />
+                  <span className="text-lg font-bold text-[#2c4114]">
+                    Luntimeter
+                  </span>
+                </div>
+                <MobileNavigation links={header.navbar.items} />
+                <div className="flex flex-col mt-auto gap-3 p-4">
+                  {header.rightCtas.items.map((cta) => (
+                    <Button
+                      key={cta._id}
+                      asChild
+                      variant={
+                        cta.type === "primary"
+                          ? "default"
+                          : cta.type === "secondary"
+                          ? "secondary"
+                          : cta.type === "outline"
+                          ? "outline"
+                          : "ghost"
+                      }
+                      className="w-full transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+                    >
+                      <Link href={cta.href}>{cta.label}</Link>
+                    </Button>
+                  ))}
+                </div>
               </div>
             </SheetContent>
           </Sheet>
@@ -175,16 +199,16 @@ export const Header = ({
 // Desktop Navigation Component
 function DesktopNavigation({ links }: { links: LinkItem[] }) {
   return (
-    <NavigationMenu>
-      <NavigationMenuList>
+    <NavigationMenu className="max-w-none">
+      <NavigationMenuList className="gap-1">
         {links.map((link) =>
           link.sublinks.items.length > 0 ? (
             <NavigationMenuItem key={link._id}>
-              <NavigationMenuTrigger className="px-4">
+              <NavigationMenuTrigger className="px-4 py-2 text-sm font-medium transition-all duration-200 hover:bg-accent hover:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground">
                 {link._title}
               </NavigationMenuTrigger>
               <NavigationMenuContent>
-                <ul className="grid w-[400px] gap-2 p-4">
+                <ul className="grid w-[400px] gap-1 p-4">
                   {link.sublinks.items.map((sublink) => {
                     const { href, title } =
                       sublink.link.__typename === "PageReferenceComponent"
@@ -202,7 +226,7 @@ function DesktopNavigation({ links }: { links: LinkItem[] }) {
                         <NavigationMenuLink asChild>
                           <Link
                             href={href}
-                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-all duration-200 hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground hover:scale-[1.02] active:scale-[0.98]"
                           >
                             <div className="text-sm font-medium leading-none">
                               {title}
@@ -220,9 +244,10 @@ function DesktopNavigation({ links }: { links: LinkItem[] }) {
               <NavigationMenuLink asChild>
                 <Link
                   href={link.href ?? "#"}
-                  className={navigationMenuTriggerStyle()}
+                  className="group relative px-4 py-2 text-sm font-medium transition-all duration-200 hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                 >
                   {link._title}
+                  <span className="absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-foreground/20 to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
                 </Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
@@ -236,7 +261,7 @@ function DesktopNavigation({ links }: { links: LinkItem[] }) {
 // Mobile Navigation Component
 function MobileNavigation({ links }: { links: LinkItem[] }) {
   return (
-    <nav className="flex flex-col gap-4 mt-8">
+    <nav className="flex flex-col gap-2">
       {links.map((link) =>
         link.sublinks.items.length > 0 ? (
           <MobileSubmenu
@@ -247,7 +272,7 @@ function MobileNavigation({ links }: { links: LinkItem[] }) {
         ) : (
           <Link
             key={link._id}
-            className="px-2 py-1 text-foreground hover:underline"
+            className="rounded-lg px-4 py-3 text-foreground transition-all duration-200 hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
             href={link.href ?? "#"}
           >
             {link._title}
@@ -268,12 +293,12 @@ function MobileSubmenu({
 }) {
   return (
     <Collapsible className="w-full">
-      <CollapsibleTrigger className="flex w-full items-center justify-between px-2 py-1 text-foreground">
-        <span>{title}</span>
+      <CollapsibleTrigger className="flex w-full items-center justify-between rounded-lg px-4 py-3 text-foreground transition-all duration-200 hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+        <span className="font-medium">{title}</span>
         <ChevronDown className="h-4 w-4 transition-transform duration-200 ui-open:rotate-180" />
       </CollapsibleTrigger>
-      <CollapsibleContent className="pl-4 pt-1">
-        <ul className="flex flex-col space-y-1">
+      <CollapsibleContent className="overflow-hidden transition-all duration-200">
+        <ul className="flex flex-col space-y-1 p-2">
           {sublinks.map((sublink) => {
             const { href, title } =
               sublink.link.__typename === "PageReferenceComponent"
@@ -289,7 +314,7 @@ function MobileSubmenu({
             return (
               <li key={sublink._id}>
                 <Link
-                  className="block px-2 py-1 text-muted-foreground hover:text-foreground"
+                  className="block rounded-md px-4 py-2 text-sm text-muted-foreground transition-all duration-200 hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                   href={href}
                 >
                   {title}

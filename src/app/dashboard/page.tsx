@@ -51,6 +51,7 @@ import { sidebarItems } from "@/dummydata/data";
 import { sampleProjects } from "@/dummydata/sample-projects";
 import ChatbotButton from "@/components/sections/ChatbotButton";
 import { ProjectsTab } from "@/components/sections/ProjectsTab";
+import { ProjectCard } from "@/components/ProjectCard";
 
 export default function LuntiMeterDashboard() {
     const [progress, setProgress] = useState(0);
@@ -636,6 +637,25 @@ export default function LuntiMeterDashboard() {
                                         </div>
                                     </section>
 
+                                    <section className="space-y-4">
+                                        <div className="flex items-center justify-between">
+                                            <h2 className="text-2xl font-semibold">
+                                                Completed Projects
+                                            </h2>
+                                            <Button variant="ghost" className="rounded-2xl">
+                                                View All
+                                            </Button>
+                                        </div>
+                                        <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
+                                            {sampleProjects
+                                                .filter((project) => project.status === "completed")
+                                                .slice(0, 3)
+                                                .map((project) => (
+                                                    <ProjectCard key={project.name} project={project} variant="default" />
+                                                ))}
+                                        </div>
+                                    </section>
+
                                     <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
                                         <section className="space-y-4">
                                             <div className="flex items-center justify-between">
@@ -702,45 +722,48 @@ export default function LuntiMeterDashboard() {
                                             </div>
                                             <div className="rounded-3xl border">
                                                 <div className="grid grid-cols-1 divide-y">
-                                                    {sampleProjects.slice(0, 3).map((project) => (
-                                                        <motion.div
-                                                            key={project.name}
-                                                            whileHover={{
-                                                                backgroundColor: "rgba(0,0,0,0.02)",
-                                                            }}
-                                                            className="p-4"
-                                                        >
-                                                            <div className="flex items-center justify-between mb-2">
-                                                                <h3 className="font-medium">{project.name}</h3>
-                                                                <Badge variant="outline" className="rounded-xl">
-                                                                    Score: {project.esgScore}
-                                                                </Badge>
-                                                            </div>
-                                                            <p className="text-sm text-muted-foreground mb-3">
-                                                                {project.description}
-                                                            </p>
-                                                            <div className="space-y-2">
-                                                                <div className="flex items-center justify-between text-sm">
-                                                                    <span>Completion Progress</span>
-                                                                    <span>{project.progress}%</span>
+                                                    {sampleProjects
+                                                        .filter(project => (project.status === "active"))
+                                                        .slice(0, 3)
+                                                        .map((project) => (
+                                                            <motion.div
+                                                                key={project.name}
+                                                                whileHover={{
+                                                                    backgroundColor: "rgba(0,0,0,0.02)",
+                                                                }}
+                                                                className="p-4"
+                                                            >
+                                                                <div className="flex items-center justify-between mb-2">
+                                                                    <h3 className="font-medium">{project.name}</h3>
+                                                                    <Badge variant="outline" className="rounded-xl">
+                                                                        Score: {project.esgScore}
+                                                                    </Badge>
                                                                 </div>
-                                                                <Progress
-                                                                    value={project.progress}
-                                                                    className="h-2 rounded-xl"
-                                                                />
-                                                            </div>
-                                                            <div className="flex items-center justify-between mt-3 text-sm text-muted-foreground">
-                                                                <div className="flex items-center">
-                                                                    <Users className="mr-1 h-4 w-4" />
-                                                                    {project.members} crew
+                                                                <p className="text-sm text-muted-foreground mb-3">
+                                                                    {project.description}
+                                                                </p>
+                                                                <div className="space-y-2">
+                                                                    <div className="flex items-center justify-between text-sm">
+                                                                        <span>Completion Progress</span>
+                                                                        <span>{project.progress}%</span>
+                                                                    </div>
+                                                                    <Progress
+                                                                        value={project.progress}
+                                                                        className="h-2 rounded-xl"
+                                                                    />
                                                                 </div>
-                                                                <div className="flex items-center">
-                                                                    <Grid className="mr-1 h-4 w-4" />
-                                                                    {project.sensors} sensors
+                                                                <div className="flex items-center justify-between mt-3 text-sm text-muted-foreground">
+                                                                    <div className="flex items-center">
+                                                                        <Users className="mr-1 h-4 w-4" />
+                                                                        {project.members} crew
+                                                                    </div>
+                                                                    <div className="flex items-center">
+                                                                        <Grid className="mr-1 h-4 w-4" />
+                                                                        {project.sensors} sensors
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                        </motion.div>
-                                                    ))}
+                                                            </motion.div>
+                                                        ))}
                                                 </div>
                                             </div>
                                         </section>

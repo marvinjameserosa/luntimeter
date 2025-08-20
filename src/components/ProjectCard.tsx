@@ -127,15 +127,17 @@ export function ProjectDialog({ project }: ProjectDialogProps) {
     return (
         <DialogContent className="rounded-2xl max-h-[80vh] overflow-y-auto lg:max-w-[60vw]">
             {/* header */}
-            <DialogHeader className="space-y-1">
-                <div className="flex items-start justify-between">
-                    <DialogTitle className="text-2xl font-bold text-foreground">
-                        {project.name}
-                    </DialogTitle>
-                    <Badge variant="default" className="capitalize py-1 px-2 rounded-xl">
-                        {project.status}
-                    </Badge>
-                </div>
+            <DialogHeader className="flex flex-row items-start justify-between">
+                <DialogTitle className="text-2xl font-bold text-foreground">
+                    {project.name}
+                </DialogTitle>
+                <Badge variant="default" className="capitalize py-1 px-2 rounded-xl">
+                    {project.status}
+                </Badge>
+            </DialogHeader>
+
+            <main className="space-y-4">
+                {/* client & location */}
                 <section className="space-y-1 text-muted-foreground">
                     <div className="flex items-center gap-2">
                         <Building2 className="h-4 w-4" />
@@ -146,9 +148,7 @@ export function ProjectDialog({ project }: ProjectDialogProps) {
                         <span>{project.location}</span>
                     </div>
                 </section>
-            </DialogHeader>
 
-            <main className="space-y-4">
                 {/* description */}
                 <section className="space-y-1">
                     <h3 className="text-lg font-semibold">Project Description</h3>

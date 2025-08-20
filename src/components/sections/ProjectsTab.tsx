@@ -8,10 +8,10 @@ import { sampleProjects } from "@/dummydata/sample-projects";
 import { ProjectCard } from "@/components/ProjectCard";
 
 
-type ProjectsProps = {
+type ProjectsTabProps = {
     defaultTab?: "active" | "completed" | "archived";
 }
-export function Projects({ defaultTab }: ProjectsProps) {
+export function ProjectsTab({ defaultTab }: ProjectsTabProps) {
     const [activeProj, setActiveProj] = useState<ProjectInterface[]>(
         sampleProjects.filter((project) => (project.status === "active"))
     );

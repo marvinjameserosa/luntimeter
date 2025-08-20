@@ -64,7 +64,7 @@ export function ProjectsTab({ defaultTab }: ProjectsTabProps) {
                         className="rounded-2xl hover:cursor-pointer"
                         onClick={() => handleTabChange("archived")}
                     >
-                        archived
+                        Archived
                     </Button>
                 </div>
             </section>

@@ -71,6 +71,11 @@ export default function LuntiMeterDashboard() {
         },
     ]);
 
+    {/* tuloy ko mamaya */ }
+    {/*
+        const [viewAll, setViewAll] = useState<"sensors" | "active_projs" | "completed_projs" | "archived_projs" | undefined>(undefined)
+    */}
+
     useEffect(() => {
         const timer = setTimeout(() => setProgress(100), 1000);
         return () => clearTimeout(timer);
@@ -642,7 +647,10 @@ export default function LuntiMeterDashboard() {
                                             <h2 className="text-2xl font-semibold">
                                                 Completed Projects
                                             </h2>
-                                            <Button variant="ghost" className="rounded-2xl">
+                                            <Button
+                                                variant="ghost"
+                                                className="rounded-2xl"
+                                            >
                                                 View All
                                             </Button>
                                         </div>
@@ -662,7 +670,7 @@ export default function LuntiMeterDashboard() {
                                                 <h2 className="text-2xl font-semibold">
                                                     Recent Reports
                                                 </h2>
-                                                <Button variant="ghost" className="rounded-2xl">
+                                                <Button variant="ghost" className="rounded-2xl" >
                                                     View All
                                                 </Button>
                                             </div>
@@ -716,7 +724,10 @@ export default function LuntiMeterDashboard() {
                                                 <h2 className="text-2xl font-semibold">
                                                     Active Projects
                                                 </h2>
-                                                <Button variant="ghost" className="rounded-2xl">
+                                                <Button
+                                                    variant="ghost"
+                                                    className="rounded-2xl"
+                                                >
                                                     View All
                                                 </Button>
                                             </div>
@@ -906,6 +917,6 @@ export default function LuntiMeterDashboard() {
             </div>
             {/* Floating Chatbot Button */}
             <ChatbotButton />
-        </div>
+        </div >
     );
 }

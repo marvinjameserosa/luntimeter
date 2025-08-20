@@ -36,7 +36,7 @@ interface Report {
 
 export interface ProjectInterface {
     name: string;
-    company: string;
+    client: string;
     location: string;
     status: "active" | "completed" | "archived";
     description: string;

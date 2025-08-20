@@ -53,6 +53,7 @@ import { recentReports } from "@/dummydata/data";
 import { sidebarItems } from "@/dummydata/data";
 import ChatbotButton from "@/components/sections/ChatbotButton";
 import { ProjectsTab } from "@/components/sections/ProjectsTab";
+import { Projects } from "@/components/sections/Projects";
 
 export default function LuntiMeterDashboard() {
     const [progress, setProgress] = useState(0);
@@ -940,7 +941,7 @@ export default function LuntiMeterDashboard() {
                                     </p>
                                 </TabsContent>
                                 <TabsContent value="projects" className="mt-0">
-                                    <ProjectsTab />
+                                    <Projects />
                                 </TabsContent>
                                 <TabsContent value="improvements" className="mt-0">
                                     <p className="text-center p-8">

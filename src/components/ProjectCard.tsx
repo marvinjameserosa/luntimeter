@@ -107,8 +107,8 @@ export function ProjectCard({ project, variant = "default" }: ProjectCardProps) 
                         <Dialog >
                             <DialogTrigger asChild>
                                 <Button
-                                    variant="secondary"
-                                    className="w-full rounded-2xl cursor-pointer hover:bg-primary/80 hover:text-secondary duration-200"
+                                    variant="outline"
+                                    className="bg-secondary w-full rounded-2xl cursor-pointer hover:bg-primary/80 hover:text-secondary duration-200"
                                 >View more</Button>
                             </DialogTrigger>
                             <ProjectDialog project={project} />

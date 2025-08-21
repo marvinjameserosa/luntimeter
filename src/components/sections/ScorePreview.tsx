@@ -1,3 +1,4 @@
+'use client';
 import React from "react";
 import BoltOutlinedIcon from '@mui/icons-material/BoltOutlined';
 import MovingOutlinedIcon from '@mui/icons-material/MovingOutlined';

@@ -33,10 +33,10 @@ import {
     DialogFooter
 } from "@/components/ui/dialog";
 
-import { ProjectInterface } from "@/dummydata/data";
+import { Project } from "@/dummydata/data";
 
 type ProjectCardProps = {
-    project: ProjectInterface;
+    project: Project;
     variant?: "default" | "full"
 }
 export function ProjectCard({ project, variant = "default" }: ProjectCardProps) {
@@ -121,7 +121,7 @@ export function ProjectCard({ project, variant = "default" }: ProjectCardProps) 
 }
 
 type ProjectDialogProps = {
-    project: ProjectInterface;
+    project: Project;
 }
 export function ProjectDialog({ project }: ProjectDialogProps) {
     return (

@@ -34,7 +34,7 @@ interface Report {
     collaborators: number;
 }
 
-export interface ProjectInterface {
+export interface Project {
     name: string;
     client: string;
     location: string;

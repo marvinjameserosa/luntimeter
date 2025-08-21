@@ -3,8 +3,8 @@ import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 
-import { ProjectInterface } from "@/dummydata/data";
-import { sampleProjects } from "@/dummydata/sample-projects";
+import { Project } from "@/dummydata/data";
+import sampleProjectsJSON from "@/dummydata/sample-projects.json";
 import { ProjectCard } from "@/components/ProjectCard";
 
 
@@ -12,17 +12,19 @@ type ProjectsTabProps = {
     defaultTab?: "active" | "completed" | "archived";
 }
 export function ProjectsTab({ defaultTab }: ProjectsTabProps) {
-    const [activeProj, setActiveProj] = useState<ProjectInterface[]>(
+    const [sampleProjects, setSampleProjects] = useState<Project[]>(sampleProjectsJSON as Project[])
+
+    const [activeProj, setActiveProj] = useState<Project[]>(
         sampleProjects.filter((project) => (project.status === "active"))
     );
-    const [completedProj, setCompletedProj] = useState<ProjectInterface[]>(
+    const [completedProj, setCompletedProj] = useState<Project[]>(
         sampleProjects.filter((project) => (project.status === "completed"))
     );
-    const [archivedProj, setArchivedProj] = useState<ProjectInterface[]>(
+    const [archivedProj, setArchivedProj] = useState<Project[]>(
         sampleProjects.filter((project) => (project.status === "archived"))
     );
     const [selectedTab, setSelectedTab] = useState<"active" | "completed" | "archived">(defaultTab || "active");
-    const [projects, setProjects] = useState<ProjectInterface[]>(activeProj)
+    const [projects, setProjects] = useState<Project[]>(activeProj)
 
     function handleTabChange(tab: "active" | "completed" | "archived") {
         setSelectedTab(tab);

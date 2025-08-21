@@ -45,11 +45,13 @@ import {
     TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
-import { sensors } from "@/dummydata/data";
+
 import { recentReports } from "@/dummydata/data";
 import { sidebarItems } from "@/dummydata/data";
-import { sampleProjects } from "@/dummydata/sample-projects";
 import ChatbotButton from "@/components/sections/ChatbotButton";
+
+import { Project, sensors } from "@/dummydata/data";
+import sampleProjectsJSON from "@/dummydata/sample-projects.json";
 import { ProjectsTab } from "@/components/sections/ProjectsTab";
 import { ProjectCard } from "@/components/ProjectCard";
 
@@ -62,19 +64,8 @@ export default function LuntiMeterDashboard() {
     const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>(
         {}
     );
-    const [chatInput, setChatInput] = useState("");
-    const [chatMessages, setChatMessages] = useState([
-        {
-            role: "assistant",
-            content:
-                "Hello! I'm your LuntiMeter AI assistant. How can I help you improve your ESG performance today?",
-        },
-    ]);
 
-    {/* tuloy ko mamaya */ }
-    {/*
-        const [viewAll, setViewAll] = useState<"sensors" | "active_projs" | "completed_projs" | "archived_projs" | undefined>(undefined)
-    */}
+    const [sampleProjects, setSampleProjects] = useState<Project[]>(sampleProjectsJSON as Project[])
 
     useEffect(() => {
         const timer = setTimeout(() => setProgress(100), 1000);
@@ -86,38 +77,6 @@ export default function LuntiMeterDashboard() {
             ...prev,
             [title]: !prev[title],
         }));
-    };
-
-    const handleChatSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        if (!chatInput.trim()) return;
-
-        // Add user message
-        setChatMessages((prev) => [...prev, { role: "user", content: chatInput }]);
-
-        // Simulate AI response (in a real app, this would call an API)
-        setTimeout(() => {
-            let response = "";
-            if (
-                chatInput.toLowerCase().includes("improvement") ||
-                chatInput.toLowerCase().includes("suggest")
-            ) {
-                response =
-                    "Based on your recent data, I recommend improving energy efficiency in your west wing operations. Our sensors detected a 15% higher energy consumption compared to industry benchmarks. Would you like me to generate a detailed improvement plan?";
-            } else if (chatInput.toLowerCase().includes("report")) {
-                response =
-                    "I can generate comprehensive ESG reports tailored to various frameworks including GRI, SASB, and TCFD. Which reporting standard would you like to use?";
-            } else {
-                response =
-                    "I'd be happy to help with that. Would you like me to analyze your current ESG metrics and provide actionable insights?";
-            }
-            setChatMessages((prev) => [
-                ...prev,
-                { role: "assistant", content: response },
-            ]);
-        }, 1000);
-
-        setChatInput("");
     };
 
     return (

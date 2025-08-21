@@ -1,5 +1,5 @@
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 
@@ -7,36 +7,40 @@ import { Project } from "@/dummydata/data";
 import sampleProjectsJSON from "@/dummydata/sample-projects.json";
 import { ProjectCard } from "@/components/ProjectCard";
 
+export type projectStatuses = "active" | "completed" | "archived";
 
 type ProjectsTabProps = {
-    defaultTab?: "active" | "completed" | "archived";
+    defaultTab?: projectStatuses;
+    viewAll?: string | null;
 }
-export function ProjectsTab({ defaultTab }: ProjectsTabProps) {
+export function ProjectsTab({ defaultTab, viewAll = null }: ProjectsTabProps) {
     const [sampleProjects, setSampleProjects] = useState<Project[]>(sampleProjectsJSON as Project[])
+    const [projects, setProjects] = useState<Project[]>(
+        sampleProjects.filter((project) => (project.status === defaultTab || "active"))
+    )
 
-    const [activeProj, setActiveProj] = useState<Project[]>(
-        sampleProjects.filter((project) => (project.status === "active"))
-    );
-    const [completedProj, setCompletedProj] = useState<Project[]>(
-        sampleProjects.filter((project) => (project.status === "completed"))
-    );
-    const [archivedProj, setArchivedProj] = useState<Project[]>(
-        sampleProjects.filter((project) => (project.status === "archived"))
-    );
-    const [selectedTab, setSelectedTab] = useState<"active" | "completed" | "archived">(defaultTab || "active");
-    const [projects, setProjects] = useState<Project[]>(activeProj)
+    const [selectedTab, setSelectedTab] = useState<projectStatuses>(defaultTab || "active");
+    useEffect(() => {
+        if (viewAll && ["active", "completed", "archived"].includes(viewAll)) {
+            setSelectedTab(viewAll as projectStatuses);
+            if (viewAll === "active") {
+                setProjects(sampleProjects.filter((project) => project.status === "active"));
+            } else if (viewAll === "completed") {
+                setProjects(sampleProjects.filter((project) => project.status === "completed"));
+            } else {
+                setProjects(sampleProjects.filter((project) => project.status === "archived"));
+            }
+        }
+    }, [viewAll, sampleProjects])
 
-    function handleTabChange(tab: "active" | "completed" | "archived") {
+    function handleTabChange(tab: projectStatuses) {
         setSelectedTab(tab);
         if (tab === "active") {
-            setActiveProj(sampleProjects.filter((project) => project.status === "active"));
-            setProjects(activeProj)
+            setProjects(sampleProjects.filter((project) => project.status === "active"));
         } else if (tab === "completed") {
-            setCompletedProj(sampleProjects.filter((project) => project.status === "completed"));
-            setProjects(completedProj)
+            setProjects(sampleProjects.filter((project) => project.status === "completed"));
         } else {
-            setArchivedProj(sampleProjects.filter((project) => project.status === "archived"));
-            setProjects(archivedProj)
+            setProjects(sampleProjects.filter((project) => project.status === "archived"));
         }
     }
 

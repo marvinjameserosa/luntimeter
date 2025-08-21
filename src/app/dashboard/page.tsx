@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import {
@@ -52,7 +52,7 @@ import ChatbotButton from "@/components/sections/ChatbotButton";
 
 import { Project, sensors } from "@/dummydata/data";
 import sampleProjectsJSON from "@/dummydata/sample-projects.json";
-import { ProjectsTab } from "@/components/sections/ProjectsTab";
+import { ProjectsTab, projectStatuses } from "@/components/sections/ProjectsTab";
 import { ProjectCard } from "@/components/ProjectCard";
 
 export default function LuntiMeterDashboard() {
@@ -65,7 +65,14 @@ export default function LuntiMeterDashboard() {
         {}
     );
 
-    const [sampleProjects, setSampleProjects] = useState<Project[]>(sampleProjectsJSON as Project[])
+    const [sampleProjects, setSampleProjects] = useState<Project[]>(sampleProjectsJSON as Project[]);
+    const [viewAll, setViewAll] = useState<string | null>(null);
+    const handleViewAll = (tab: string, subtab?: string) => {
+        if (tab === "projects" && subtab && ["active", "completed", "archived"].includes(subtab)) {
+            setActiveTab(tab)
+            setViewAll(subtab)
+        }
+    }
 
     useEffect(() => {
         const timer = setTimeout(() => setProgress(100), 1000);
@@ -442,18 +449,21 @@ export default function LuntiMeterDashboard() {
                                 <TabsTrigger
                                     value="home"
                                     className="rounded-xl data-[state=active]:rounded-xl"
+                                    onClick={() => setViewAll(null)}
                                 >
                                     Dashboard
                                 </TabsTrigger>
                                 <TabsTrigger
                                     value="sensors"
                                     className="rounded-xl data-[state=active]:rounded-xl"
+                                    onClick={() => setViewAll(null)}
                                 >
                                     Sensors
                                 </TabsTrigger>
                                 <TabsTrigger
                                     value="reports"
                                     className="rounded-xl data-[state=active]:rounded-xl"
+                                    onClick={() => setViewAll(null)}
                                 >
                                     Reports
                                 </TabsTrigger>
@@ -466,6 +476,7 @@ export default function LuntiMeterDashboard() {
                                 <TabsTrigger
                                     value="improvements"
                                     className="rounded-xl data-[state=active]:rounded-xl"
+                                    onClick={() => setViewAll(null)}
                                 >
                                     Improvements
                                 </TabsTrigger>
@@ -609,6 +620,7 @@ export default function LuntiMeterDashboard() {
                                             <Button
                                                 variant="ghost"
                                                 className="rounded-2xl"
+                                                onClick={() => handleViewAll("projects", "completed")}
                                             >
                                                 View All
                                             </Button>
@@ -629,7 +641,10 @@ export default function LuntiMeterDashboard() {
                                                 <h2 className="text-2xl font-semibold">
                                                     Recent Reports
                                                 </h2>
-                                                <Button variant="ghost" className="rounded-2xl" >
+                                                <Button
+                                                    variant="ghost"
+                                                    className="rounded-2xl"
+                                                >
                                                     View All
                                                 </Button>
                                             </div>
@@ -686,6 +701,7 @@ export default function LuntiMeterDashboard() {
                                                 <Button
                                                     variant="ghost"
                                                     className="rounded-2xl"
+                                                    onClick={() => handleViewAll("projects", "active")}
                                                 >
                                                     View All
                                                 </Button>
@@ -862,7 +878,7 @@ export default function LuntiMeterDashboard() {
                                     </p>
                                 </TabsContent>
                                 <TabsContent value="projects" className="mt-0">
-                                    <ProjectsTab />
+                                    <ProjectsTab viewAll={viewAll} />
                                 </TabsContent>
                                 <TabsContent value="improvements" className="mt-0">
                                     <p className="text-center p-8">

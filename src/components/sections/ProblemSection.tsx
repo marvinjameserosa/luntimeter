@@ -24,7 +24,10 @@ export function ProblemSection() {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f9331d] to-[#6ACF30]">
               Unrewarded
             </span>
-            . <br></br>Until Now.
+            . <br></br> Until{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#6ACF30] to-[#34D399]">
+              Now.
+            </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed px-20 ">
             Small construction firms struggle to access fair financing because

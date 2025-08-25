@@ -66,6 +66,58 @@ const headerData = {
             ],
           },
         },
+        {
+          _id: "4",
+          _title: "Features",
+          sublinks: {
+            items: [
+              {
+                _id: "4-1",
+                _title: "Lead & Client Hub",
+                link: {
+                  __typename: "PageReferenceComponent",
+                  page: {
+                    pathname: "/features/lead-client-hub",
+                    _title: "Lead & Client Hub",
+                  },
+                },
+              },
+              {
+                _id: "4-2",
+                _title: "Smart Estimator & Proposal",
+                link: {
+                  __typename: "PageReferenceComponent",
+                  page: {
+                    pathname: "/features/smart-estimator-proposal",
+                    _title: "Smart Estimator & Proposal",
+                  },
+                },
+              },
+              {
+                _id: "4-3",
+                _title: "Field Operations Hub",
+                link: {
+                  __typename: "PageReferenceComponent",
+                  page: {
+                    pathname: "/features/field-operations-hub",
+                    _title: "Field Operations Hub",
+                  },
+                },
+              },
+              {
+                _id: "4-4",
+                _title: "Live Financial Dashboard",
+                link: {
+                  __typename: "PageReferenceComponent",
+                  page: {
+                    pathname: "/features/live-financial-dashboard",
+                    _title: "Live Financial Dashboard",
+                  },
+                },
+              },
+            ],
+          },
+        },
       ],
     },
     rightCtas: {
@@ -343,8 +395,183 @@ export default function LuntiMeterLanding() {
         </div>
       </section>
 
-      {/* Case Study Section */}
+      {/* Construction Management Features Section */}
       <section className="py-20 px-4 bg-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-[#333333] mb-6">
+              Complete <span className="text-[#6ACF30]">Construction Management</span> Solution
+            </h2>
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              Beyond ESG tracking, LuntiMeter provides a comprehensive suite of construction management tools 
+              to streamline your operations, improve efficiency, and boost your project success.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Construction CRM & Sales */}
+            <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+              <h3 className="text-2xl font-bold text-[#333333] mb-6 border-b border-gray-200 pb-4">
+                Construction CRM & Sales
+              </h3>
+              <ul className="space-y-3">
+                <li className="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-[#6ACF30] mr-3 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">Assemblies Management</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-[#6ACF30] mr-3 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">Automated Reminders</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-[#6ACF30] mr-3 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">Customer Relationship Management</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-[#6ACF30] mr-3 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">Electronic Signatures</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-[#6ACF30] mr-3 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">Estimate & Change Orders</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-[#6ACF30] mr-3 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">Invoicing & Payment Processing</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-[#6ACF30] mr-3 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">Lead Management & Capture Forms</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-[#6ACF30] mr-3 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">Progress Billing for Construction</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-[#6ACF30] mr-3 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">Reporting & Selections</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-[#6ACF30] mr-3 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">Templates & Custom Forms</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Project Management */}
+            <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+              <h3 className="text-2xl font-bold text-[#333333] mb-6 border-b border-gray-200 pb-4">
+                Project Management
+              </h3>
+              <ul className="space-y-3">
+                <li className="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-[#6ACF30] mr-3 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">Change Orders Management</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-[#6ACF30] mr-3 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">Client Portal & Messaging</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-[#6ACF30] mr-3 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">Convert Estimates to Tasks</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-[#6ACF30] mr-3 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">Gantt Charts & Timeline Management</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-[#6ACF30] mr-3 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">Job Costing & Budgeting</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-[#6ACF30] mr-3 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">Job Management & Tracking</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-[#6ACF30] mr-3 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">Linear Project Timelines</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-[#6ACF30] mr-3 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">Photo Reports & Documentation</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-[#6ACF30] mr-3 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">Purchase Orders & Resource Management</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-[#6ACF30] mr-3 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">Scheduling & Task Management</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Field Use & Mobile Features */}
+            <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+              <h3 className="text-2xl font-bold text-[#333333] mb-6 border-b border-gray-200 pb-4">
+                Field Use & Mobile
+              </h3>
+              <ul className="space-y-3">
+                <li className="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-[#6ACF30] mr-3 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">Channeled Communications</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-[#6ACF30] mr-3 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">Full Featured Mobile App</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-[#6ACF30] mr-3 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">Geo-Fenced Time Tracking</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-[#6ACF30] mr-3 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">Mobile Notifications</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-[#6ACF30] mr-3 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">Photos & File Storage</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-[#6ACF30] mr-3 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">Task Management & To-Dos</span>
+                </li>
+              </ul>
+              
+              <div className="mt-8 pt-6 border-t border-gray-200">
+                <h4 className="text-xl font-bold text-[#333333] mb-4">Integrations</h4>
+                <ul className="space-y-3">
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-[#6ACF30] mr-3 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-700">Live Construction Costs</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-[#6ACF30] mr-3 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-700">QuickBooks Desktop & Online</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-[#6ACF30] mr-3 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-700">Zapier Integration</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center mt-12">
+            <Button
+              size="lg"
+              className="bg-[#6ACF30] hover:bg-[#5BB429] text-white text-lg px-8 py-4 font-semibold"
+            >
+              Explore All Features
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Case Study Section */}
+      <section className="py-20 px-4 bg-white">
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-[#333333] mb-6">
             Inspired by <span className="text-[#6ACF30]">Proven Success</span>

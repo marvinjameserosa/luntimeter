@@ -61,7 +61,7 @@ import { cn } from "@/lib/utils";
 
 import { recentReports } from "@/dummydata/data";
 import { sidebarItems } from "@/dummydata/data";
-import ChatbotButton from "@/components/sections/dashboard/ChatbotButton";
+import ChatbotButton from "@/components/sections/ChatbotButton";
 
 import { Project, sensors } from "@/dummydata/data";
 import sampleProjectsJSON from "@/dummydata/sample-projects.json";
@@ -222,6 +222,12 @@ export default function LuntiMeterDashboard() {
                         : "hover:bg-muted"
                     )}
                     onClick={() => {
+                      if (item.title === "Clients") {
+                        const leadClientHub = document.getElementById("lead-client-hub");
+                        if (leadClientHub) {
+                          leadClientHub.scrollIntoView({ behavior: "smooth" });
+                        }
+                      }
                       item.onClick && item.onClick();
                       item.items && toggleExpanded(item.title);
                     }}
@@ -518,73 +524,19 @@ export default function LuntiMeterDashboard() {
         </header>
 
         <main className="flex-1 p-4 md:p-6">
-          <Tabs
-            defaultValue="overview"
-            value={activeTab}
-            onValueChange={setActiveTab}
-            className="w-full"
-          >
-            <div className="mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-              <TabsList className="grid w-full max-w-[700px] grid-cols-6 rounded-2xl p-1">
-                <TabsTrigger
-                  value="overview"
-                  className="rounded-xl data-[state=active]:rounded-xl"
-                >
-                  Overview
-                </TabsTrigger>
-                <TabsTrigger
-                  value="crm"
-                  className="rounded-xl data-[state=active]:rounded-xl"
-                >
-                  Clients
-                </TabsTrigger>
-                <TabsTrigger
-                  value="estimator"
-                  className="rounded-xl data-[state=active]:rounded-xl"
-                >
-                  Proposals
-                </TabsTrigger>
-                <TabsTrigger
-                  value="operations"
-                  className="rounded-xl data-[state=active]:rounded-xl"
-                >
-                  Projects
-                </TabsTrigger>
-                <TabsTrigger
-                  value="finance"
-                  className="rounded-xl data-[state=active]:rounded-xl"
-                >
-                  Financials
-                </TabsTrigger>
-                <TabsTrigger
-                  value="lunti-score"
-                  className="rounded-xl data-[state=active]:rounded-xl"
-                >
-                  Lunti Score
-                </TabsTrigger>
-              </TabsList>
-              <div className="hidden md:flex gap-2">
-                <Button variant="outline" className="rounded-2xl">
-                  <Download className="mr-2 h-4 w-4" />
-                  Export Data
-                </Button>
-                <Button className="rounded-2xl">
-                  <Plus className="mr-2 h-4 w-4" />
-                  New Lead
-                </Button>
-              </div>
-            </div>
+          <div className="hidden md:flex gap-2 mb-8">
+            <Button variant="outline" className="rounded-2xl">
+              <Download className="mr-2 h-4 w-4" />
+              Export Data
+            </Button>
+            <Button className="rounded-2xl">
+              <Plus className="mr-2 h-4 w-4" />
+              New Lead
+            </Button>
+          </div>
 
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeTab}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.2 }}
-              >
-                {/* Overview Dashboard */}
-                <TabsContent value="overview" className="space-y-8 mt-0">
+          {/* Overview Dashboard */}
+          <div className="space-y-8 mt-0">
                   {/* Welcome Banner */}
                   <section>
                     <motion.div
@@ -642,6 +594,7 @@ export default function LuntiMeterDashboard() {
                     {luntiModules.map((module) => (
                       <Card
                         key={module.value}
+                        id={module.value === "crm" ? "lead-client-hub" : undefined}
                         className={cn(
                           "rounded-3xl cursor-pointer hover:border-primary transition-all duration-300",
                           activeModule === module.value
@@ -840,10 +793,6 @@ export default function LuntiMeterDashboard() {
                       </div>
                     </section>
                   </div>
-                </TabsContent>
-
-                {/* Lead & Client Hub (CRM) Tab */}
-                <TabsContent value="crm" className="space-y-8 mt-0">
                   <div className="flex items-center justify-between">
                     <h2 className="text-2xl font-bold">Lead & Client Hub</h2>
                     <div className="flex gap-2">
@@ -1009,10 +958,6 @@ export default function LuntiMeterDashboard() {
                       leads?"
                     </p>
                   </div>
-                </TabsContent>
-
-                {/* Smart Estimator Tab */}
-                <TabsContent value="estimator" className="space-y-8 mt-0">
                   <div className="flex items-center justify-between">
                     <h2 className="text-2xl font-bold">
                       Smart Estimator & Proposals
@@ -1213,10 +1158,6 @@ export default function LuntiMeterDashboard() {
                       </div>
                     </div>
                   </div>
-                </TabsContent>
-
-                {/* Enhanced Field Operations Tab with Project Management Focus */}
-                <TabsContent value="operations" className="space-y-8 mt-0">
                   <div className="flex items-center justify-between">
                     <h2 className="text-2xl font-bold">
                       Project Management Hub
@@ -1935,10 +1876,6 @@ export default function LuntiMeterDashboard() {
                       </Card>
                     </div>
                   </div>
-                </TabsContent>
-
-                {/* New Lunti ESG Score Tab */}
-                <TabsContent value="lunti-score" className="space-y-8 mt-0">
                   <div className="flex items-center justify-between">
                     <h2 className="text-2xl font-bold">
                       Lunti ESG Score Dashboard
@@ -2430,12 +2367,7 @@ export default function LuntiMeterDashboard() {
                       </Card>
                     </div>
                   </div>
-                </TabsContent>
-
-                {/* Other tabs content remains the same */}
-              </motion.div>
-            </AnimatePresence>
-          </Tabs>
+          </div>
         </main>
       </div>
       {/* Floating Chatbot Button */}

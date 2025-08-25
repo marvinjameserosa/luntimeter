@@ -195,6 +195,10 @@ export const sidebarItems: SidebarItem[] = [
         isActive: true,
     },
     {
+        title: "Clients",
+        icon: <Users />,
+    },
+    {
         title: "Sensors",
         icon: <Grid />,
         badge: "1", // e.g. 1 sensor needs calibration
